@@ -17,7 +17,7 @@ async function sendMessage() {
 
   const botMsg = document.createElement("div");
   botMsg.className = "self-start bg-white text-[#20063B] px-3 py-2 rounded font-bold";
-  botMsg.textContent = "Let Me Check...";
+  botMsg.textContent = "Checking...";
   chatBox.appendChild(botMsg);
 
   chatBox.scrollTop = chatBox.scrollHeight;
@@ -28,3 +28,10 @@ sendBtn.addEventListener("click", sendMessage);
 userInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") sendMessage();
 })
+
+async function getKey() {
+const options = {method: "POST"}
+  const response = await fetch("https://proxy-key-j3wx.onrender.com/get-key",options);
+  const data = await response.json();
+    return data.key;
+}
